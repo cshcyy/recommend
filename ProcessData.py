@@ -48,7 +48,7 @@ print(s_diag_matrix.shape)
 print(svd_prediction.shape)
 svd_prediction[svd_prediction < 1] = 1
 svd_prediction[svd_prediction > 5] = 5
-
+#svd_prediction = np.round(svd_prediction,3)
 #训练集预测
 
 from sklearn.metrics import mean_squared_error
@@ -64,3 +64,4 @@ testDataMatrixFlatten = testDataMatrix[testDataMatrix.nonzero()]
 testError = sqrt(mean_squared_error(predictionFlatten,testDataMatrixFlatten))
 print('测试集预测均方根误差', testError)
 print(predictionFlatten.shape)
+np.savetxt('svdPrediction.csv', svd_prediction, delimiter=',',fmt='%0.3f')
