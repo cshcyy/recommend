@@ -49,6 +49,12 @@ print(svd_prediction.shape)
 svd_prediction[svd_prediction < 1] = 1
 svd_prediction[svd_prediction > 5] = 5
 #svd_prediction = np.round(svd_prediction,3)
+file = open('svdResult.txt', 'a')
+file.write("%s\n" % ("------------------------------------------------------"))
+
+for i in range(len(svd_prediction)):  # 将svd矩阵变为txt文件
+	for j in range(len(svd_prediction[i])):
+		file.write('%s\t%s\t%s\n' % (i+1, j+1, svd_prediction[i][j]))
 #训练集预测
 
 from sklearn.metrics import mean_squared_error
